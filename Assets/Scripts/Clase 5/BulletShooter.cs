@@ -6,7 +6,12 @@ public class BulletShooter : MonoBehaviour
 {
     //Esto es para saber que bala vamos a disparar
     [SerializeField] private Bullet m_bulletToShoot;
-    // Start is called before the first frame update
+    //Al pasar el transofrm del shooting point, podemos hacer que siempre salga de ahi
+    [SerializeField] private Transform m_shootingPoint;
+    //Podemos asignar un padre
+    [SerializeField] private Transform m_bulletParent;
+
+
     void Start()
     {
         Shoot();
@@ -15,12 +20,12 @@ public class BulletShooter : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        Shoot();
     }
 
     private void Shoot()
     {
         //Paso 1: Instanciar nueva bala
-        Instantiate(m_bulletToShoot)
+        Instantiate(m_bulletToShoot, m_shootingPoint.position, m_shootingPoint.rotation, m_bulletParent);
     }
 }

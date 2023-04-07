@@ -5,7 +5,6 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     [SerializeField] private float m_speed;
-    // Start is called before the first frame update
     void Start()
     {
         
@@ -14,6 +13,6 @@ public class Bullet : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position += m_speed * Time.deltaTime * transform.forward;
+        transform.position += m_speed * Time.deltaTime * (transform.forward * -1);
     }
 }
