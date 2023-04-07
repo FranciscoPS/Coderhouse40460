@@ -25,7 +25,8 @@ public class BulletShooter : MonoBehaviour
 
     private void Shoot()
     {
-        //Paso 1: Instanciar nueva bala
+        //Instanciar nueva bala
+        //Si quisieramos mandar la rotación no personalizada, es decir en 0, 0, 0 reemplazamos por "Quaternion.identity"
         Instantiate(m_bulletToShoot, m_shootingPoint.position, m_shootingPoint.rotation, m_bulletParent);
     }
 }
