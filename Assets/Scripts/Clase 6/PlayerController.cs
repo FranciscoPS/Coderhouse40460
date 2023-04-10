@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField] private bool canMove = true;
+    [SerializeField] private float m_playerHealth;
     [SerializeField] private float m_speed;
 
 
@@ -15,7 +15,7 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        if (canMove)
+        if (m_playerHealth > 0)
             Move();
     }
 }
