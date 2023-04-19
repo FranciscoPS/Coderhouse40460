@@ -1,25 +1,31 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Cinemachine;
 
 public class FollowCamera : MonoBehaviour
 {
-    [SerializeField] private Transform m_pointOfInterest;
-    [SerializeField] private float m_followTime;
-    private Vector3 m_initialDistance;
+    [SerializeField] private CinemachineVirtualCamera m_camera1, m_camera2;
+    [SerializeField] private GameObject m_camera1Object, m_camera2Object;
 
-    void Awake()
+    private void Start()
     {
-        //La distancia inicial es igual a la distancia del punto de interés menos la distancia del componente actual
-        m_initialDistance = m_pointOfInterest.position - transform.position;
+        m_camera1Object.SetActive(true);
+        m_camera2Object.SetActive(false);
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        //El siguiente código da suavizado al movimiento de la cámara
-        var l_currVelocity = new Vector3();
-        var l_desiredPosition = Vector3.SmoothDamp(transform.position, m_pointOfInterest.position - m_initialDistance, ref l_currVelocity, m_followTime);
-        transform.position = l_desiredPosition;
+        if (Input.GetKeyDown(KeyCode.J))
+        {
+            AlternateCameras();
+        }
+
+    }
+
+    private void AlternateCameras()
+    {
+        m_camera1Object.SetActive(!m_camera1Object.activeSelf);
+        m_camera2Object.SetActive(!m_camera1Object.activeSelf);
     }
 }
