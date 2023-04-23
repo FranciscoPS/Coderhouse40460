@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour
+public class PlayerControllerShooter : MonoBehaviour
 {
     [SerializeField] private float m_playerHealth;
     [SerializeField] private float m_speed;
